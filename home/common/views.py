@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
+from home.common.models import Place, Module
 
 
 
@@ -9,9 +10,18 @@ from django.template.context import RequestContext
 
 
 @login_required
-def home(request):
+def home(request, place_name=None):
     """Home page."""
-    return render_to_response('home.html', RequestContext(request, {}))
+    
+    if place_name:
+        place = Place.objects.get(name=place_name)
+    else:
+        place = Place.objects.all()[0]
+    
+    countdown = place.countdown_set.get(place=place)
+    
+    return render_to_response('home.html', RequestContext(request, { 'place': place,
+                                                                     'countdown': countdown,}))
 
 
 def hello(request):
