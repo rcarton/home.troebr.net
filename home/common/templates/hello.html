@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}WHO ARE YOU?{% endblock %}
+
+{% block custom-fonts %}
+	<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block custom-css %}
+
+
+body {
+	background: black;
+	color: #00ff00;
+	font-family: 'VT323';
+	font-size: 22pt;
+	
+}
+
+#HELLO_UNKNOWN {
+	text-align: right;
+	margin-right: 60px;
+}
+
+#HELLO input, form#HELLO_UNKNOWN input, -webkit-autofill {
+	background-color: black;
+	border: 1px dashed #00ff00;
+	color: #00ff00;
+	font-family: 'VT323';
+	font-size: 22pt;
+	width: 250px;
+}
+#HELLO input:focus { outline: none; }
+
+#HELLO {
+	width: 625px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+#LOGOUT {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	float: right;
+}
+
+{% endblock %}
+
+{% block custom-js %}
+ 
+function hello(name) {
+	$("#HELLO_UNKNOWN").submit();
+}
+
+$(document).ready(function() {
+	
+	// Link on the logo div
+	$('#HELLO_UNKNOWN_INPUT').focus();
+	
+	$('#HELLO_UNKNOWN_PASSWORD').bind('keypress', function(e) { if(e.keyCode == 13) { hello();} });
+	
+	if ($.browser.webkit) {
+   		$('input').attr('autocomplete', 'off');
+	}
+ });
+ 
+{% endblock %}
+
+{% block content %}
+
+
+{% if not user.is_authenticated %}
+<div id="HELLO">
+		{% if cname %}
+		<div style="font-size: 55pt;">I DON'T KNOW YOU.</div>
+		{% endif %}
+		
+	  <form id="HELLO_UNKNOWN" action="{% url hello %}" method="post">{% csrf_token %}
+	  <div>
+		WHO ARE YOU? > <input id="HELLO_UNKNOWN_INPUT" type="text" name="HI_THERE" /><br>
+	  </div>
+	  <div>
+		TELL ME A SECRET > <input id="HELLO_UNKNOWN_PASSWORD" type="password" name="PASSWURD" />
+		<input type="submit" value="submit" style="display:none;" />
+	  </div>
+	  </form>
+</div>
+{% else %}
+	<div id="LOGOUT"><a href={% url logout %}>X</a></div>
+	
+	<div id="HELLO"><a href="{{ next }}">
+	
+		<a href="{{ next }}"><img src="{{STATIC_URL}}img/hello/{{user.username}}.png"></a></a>
+	
+	</div>
+
+{% endif %}
+	
+
+
+{% endblock %}
+

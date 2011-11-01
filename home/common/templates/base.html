@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+{% block head %}
+<head>
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/static/css/style.css" />
+	{% block custom-css-files %}{% endblock %}
+	
+	<!--  Fonts -->
+	{% block custom-fonts %}{% endblock %}
+	
+	<!-- Javascript -->
+	<script language="Javascript" type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script> 
+	<script language="Javascript" type="text/javascript">
+		var STATIC_URL = "{{STATIC_URL}}";
+	{% block custom-js %}{% endblock %}
+	</script>
+	
+	{% block custom-js-files %}{% endblock %}
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{{STATIC_URL}}img/moustache.png" />
+	
+	<!-- Title and meta -->
+   	<title>{% block title %}HOME{% endblock %}</title>
+   	{# <meta name="description" content="LET ME COME HOME, HOME IS WHEREVER I'M WITH YOU" /> #}
+   	{# <meta name="author" content="Rémi Carton" /> #}
+   	{# <meta name="copyright" content="home.troebr.net" /> #}
+   	
+   	<!-- Custom css -->
+	<style type="text/css">{% block custom-css %}{% endblock %}</style>
+	
+	{% block custom-head %}{% endblock %}
+	
+</head>
+{% endblock %}
+
+{% block body %}
+<body>
+
+{% block mask %}
+<div id="mask"> </div>
+{% endblock %}
+
+{% block popup %}
+<div id="popup"> </div>
+{% endblock %}
+
+{% block loading %}
+<div id="loading"> </div>
+{% endblock %}
+
+<div id="content"> 
+{% block content %} {% endblock %}
+</div>
+
+</body>
+{% endblock %}
+
+
+</html>

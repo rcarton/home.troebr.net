@@ -1,0 +1,20 @@
+bin/
+lib/
+build/
+lib64/
+src/
+include/
+share/
+*.db
+*.pyc
+*.pyd
+.project
+.pydevproject
+troebr/static/
+.settings
+*.pid
+migrations/
+# woops!
+notes/
+private_settings.py
+
