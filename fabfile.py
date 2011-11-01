@@ -21,8 +21,9 @@ def update_code():
     with cd(PROJECT_ROOT):
         # Git update
         run("git pull")
-        # Deploy static files
         run("source bin/activate")
+        
+    # Deploy static files
     with cd(DJANGO_ROOT):
         with settings(warn_only=True):
             run("python manage.py collectstatic --noinput")
