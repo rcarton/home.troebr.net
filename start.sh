@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/troebr.net/troebr
+cd ~/home.troebr.net/home
 source ../bin/activate
 exec gunicorn_django -c ../gunicorn.conf.py
 
