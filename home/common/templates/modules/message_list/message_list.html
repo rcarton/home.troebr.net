@@ -1,0 +1,30 @@
+{% load markup %}
+{% load message_list %}
+
+<div id="message-list-{{ message_list.name }}" class="message-list">
+	<div class="logo"></div>
+	<div class="messages">
+	{% for message in messages %}
+	
+		<div class="message">
+			<div class"message-author">{{ message.poster|capfirst }}</div><time>{{ message.date|age }}</time>
+			<div class="message-content">
+				{{ message.value|markdown }}
+			</div>
+		</div>
+	
+	{% endfor %}
+	
+	</div>
+	
+	<div class="message-list-new">
+		<textarea rows="1" cols="1" class="value" name="value"></textarea>
+		<input class="submit" type="button" value="bork" onclick="message(this);" />
+	</div>
+	
+</div>
+
+<script>
+	var o = $("#message-list-{{ message_list.name }} .messages");
+	o.slimScroll();
+</script>

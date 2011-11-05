@@ -1,10 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.fields import DateTimeField
+from django.db.models.fields.related import ForeignKey
 from django.db.models.signals import post_save
+from django.forms.fields import CharField
 import datetime
 import inspect
 import sys
-
 
 
 class Place(models.Model):
@@ -30,13 +32,13 @@ post_save.connect(create_user_profile, sender=User)
 # Modules
 class Module(models.Model):
     
-    # List of module tupes
+    # List of module types
     module_types= None
     
     class Meta:
         abstract = True
     
-    place = models.ForeignKey(Place)
+    place = models.OneToOneField(Place)
     name = models.CharField(max_length=100)
     
     @classmethod
@@ -46,7 +48,9 @@ class Module(models.Model):
             cls.module_types = [m for m in clsmembers if issubclass(m[1], cls) and m[1] != cls]
         return cls.module_types
     
-        
+    def __unicode__(self):
+        return "%s" % (self.name,)
+    
 class Countdown(Module):
     
     MODULE_NAME = 'countdown'
@@ -65,7 +69,19 @@ class Countdown(Module):
                 'delta': self.get_delta()
                }  
      
+class MessageList(Module):
+    MODULE_NAME = 'messagelist'
     
     
+class Item(models.Model):
+    date = models.DateTimeField(auto_now=True)
+    poster = models.ForeignKey(User)
+    
+class Message(Item):
+    messagelist = models.ForeignKey(MessageList)
+    value = models.CharField(max_length=500)
+    
+    def __unicode__(self):
+        return "%s@%s: %s[..]" % (self.poster, self.date, self.value[0:20])
     
     

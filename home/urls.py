@@ -9,8 +9,9 @@ urlpatterns = patterns('',
     url(r'^$', 'home.common.views.home', name='home'),
     url(r'^hello$', 'home.common.views.hello', name='hello'),
     url(r'^logout$', 'home.common.views.disconnect', name='logout'),
+    url(r'^ajax/', include('home.ajax_urls')),
     
-
+    
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

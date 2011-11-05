@@ -18,7 +18,7 @@ def home(request, place_name=None):
     else:
         place = Place.objects.all()[0]
     
-    countdown = place.countdown_set.get(place=place)
+    countdown = place.countdown
     
     return render_to_response('home.html', RequestContext(request, { 'place': place,
                                                                      'countdown': countdown,}))
