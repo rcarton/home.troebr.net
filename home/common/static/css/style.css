@@ -52,3 +52,7 @@ body, button, input, select, textarea {font-family: sans-serif; }
 	top: -215px;
 	margin-bottom: -204px;
 }
+
+.message img {
+	max-width: 100%;	
+}
