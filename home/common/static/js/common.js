@@ -44,21 +44,22 @@ function message(obj) {
 	
 	var url = '/ajax/add/message'
 	
-	var data = { 
-				 message_list: msg_list_name,
-				 value: value
-			   };
-	
-	$.ajax({
-		  type: 'POST',
-		  url: url,
-		  data: data,
-		  success: function(content) {
-			  // Replace the message list
-			msg_list.replaceWith(content);
-		  }
-		});
-	
+	if ($.trim(value) != "") {
+		var data = { 
+					 message_list: msg_list_name,
+					 value: value
+				   };
+		
+		$.ajax({
+			  type: 'POST',
+			  url: url,
+			  data: data,
+			  success: function(content) {
+				  // Replace the message list
+				msg_list.replaceWith(content);
+			  }
+			});
+	}
 }
 
 /*

@@ -11,7 +11,9 @@
 <pre>
 
 	I miss you
-	{{ place.countdown.get_delta }}
+	{% if place.countdown %}
+		{{ place.countdown.get_delta }}
+	{% endif %}
 
 </pre>
 
