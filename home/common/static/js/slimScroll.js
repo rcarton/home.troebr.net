@@ -61,7 +61,7 @@
 						background: color,
 						width: size,
 						position: 'absolute',
-						top: 0,
+						bottom: 0,
 						opacity: opacity,
 						display: alwaysVisible ? 'block' : 'none',
 						BorderRadius: size,
@@ -194,12 +194,22 @@
 				getBarHeight();
 
 				//scroll to bottom§§ WOOWOWOWO
-				me.ready(function(){
+				
+				var scrollToBottom = function()
+				{
 					//scrollContent(0, 99999, true);
-					me.scrollTop(9999);
-					
-					bar.css({ top: me.height() - bar.height() + 'px' });
+					me.scrollTop(99999);
+					bar.css({ bottom: 0 + 'px' });
+				}
+				
+				me.find('*').each(function(){
+					$(this).get(0).onload = function (){
+						scrollToBottom();
+					};
 				});
+				
+				scrollToBottom();
+				
 				
 				var showBar = function()
 				{

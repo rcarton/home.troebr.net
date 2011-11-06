@@ -82,6 +82,7 @@ class Message(Item):
     value = models.CharField(max_length=500)
     
     def __unicode__(self):
-        return "%s@%s: %s[..]" % (self.poster, self.date, self.value[0:20])
+        value = self.value[0:20] if self.value else '<empty>'
+        return "%s@%s: %s[..]" % (self.poster, self.date, value)
     
     

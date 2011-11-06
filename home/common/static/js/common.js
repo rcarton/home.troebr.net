@@ -57,6 +57,11 @@ function message(obj) {
 			  success: function(content) {
 				  // Replace the message list
 				msg_list.replaceWith(content);
+				msg_list.find(".messages").scrollTop(9999);
+				
+				//msg_list.find('img').each(function(){
+					//msg_list.find(".messages").scrollTop(9999);
+				//});
 			  }
 			});
 	}
