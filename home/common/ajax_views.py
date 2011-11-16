@@ -21,7 +21,8 @@ def add_message(request):
         raise HttpResponseForbidden()
     
     message = Message()
-    message.value = request.POST.get('value')
+    
+    message.value = mltag.auto_markdown(request.POST.get('value'))
     message.poster = request.user
     message.messagelist = message_list
     message.save()

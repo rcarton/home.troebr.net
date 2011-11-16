@@ -114,3 +114,10 @@ body {
 	text-align: right;
 	margin-right: 8px;
 }
+
+.message-content a, .message-content a:visited {
+	color: #4F6F84;	
+}
+.message-content a:hover {
+	color: #84a4ba;	
+}
