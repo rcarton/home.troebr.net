@@ -15,6 +15,10 @@ body {
 }
 
 
+#module-wrapper {
+	margin: auto;
+	max-width: 840px;
+}
 
 
 /* -- Message list -- */
@@ -25,12 +29,13 @@ body {
 	border: 1px solid #A4C9E3;
 	padding: 10px;
 	margin-top: 250px;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin-left: -300px;
 	border-radius: 6px;
 	max-height: 800px;
+	/*position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -300px;*/
+	float: left;
 }
 
 .messages-wrapper {

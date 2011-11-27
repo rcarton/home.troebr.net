@@ -84,5 +84,24 @@ class Message(Item):
     def __unicode__(self):
         value = self.value[0:20] if self.value else '<empty>'
         return "%s@%s: %s[..]" % (self.poster, self.date, value)
+
+class ImgurIdent(models.Model):
+    user = models.ForeignKey(User)    
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
     
+    def __unicode__(self):
+        return "%s's imgur ident" % (self.user,)
+
+class ImgurImageList(Module):
+    MODULE_NAME = 'imgurimagelist'
+    
+    # Lists of imgur idents to use for this image list
+    lists = models.ManyToManyField(ImgurIdent)
+    
+    def __unicode__(self):
+        return "%s's image list" % (self.place,)
+    
+
+
     

@@ -6,10 +6,6 @@ from django.template.context import RequestContext
 from home.common.models import Place, Module
 
 
-
-
-
-
 @login_required
 def home(request, place_name=None):
     """Home page."""

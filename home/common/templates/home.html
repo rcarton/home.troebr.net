@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load message_list %}
+{% load imgur_image_list %}
 
 {% block custom-js-files %}
 	<script language="Javascript" type="text/javascript" src="{{STATIC_URL}}js/common.js"></script> 
@@ -17,9 +18,15 @@
 
 </pre>
 
+<div id="module-wrapper">
 	{% if place.messagelist %}
 		{% message_list place.messagelist %}
 	{% endif %}
+	
+	{% if place.imgurimagelist %}
+		{% imgur_image_list place.imgurimagelist %}
+	{% endif %}
+</div>	
 
 {% endblock %}
 

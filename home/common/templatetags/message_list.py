@@ -10,10 +10,13 @@ MESSAGE_LIST_TEMPLATE = 'modules/message_list/message_list.html'
 @register.inclusion_tag(MESSAGE_LIST_TEMPLATE)
 def message_list(message_list):
     
-    messages = message_list.message_set.order_by('date')
+    messages = message_list.message_set.order_by('-date')[:30]
+    
+    messages_reordered = [m for m in messages]
+    messages_reordered.reverse()
     
     return {'message_list': message_list,
-            'messages': messages }
+            'messages': messages_reordered }
 
 @register.filter
 def age(value):
