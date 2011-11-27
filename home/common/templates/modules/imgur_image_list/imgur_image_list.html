@@ -1,0 +1,11 @@
+
+
+<div id="imgur-image-list">
+	{% for user, image_list in images.items %}
+	<div id="imgur-image-list-user">
+		{% for im in image_list %}
+			<a href="{{ im.links.original }}"><img src="{{ im.links.small_square }}" /></a>
+		{% endfor %}
+	</div>
+	{% endfor %}
+</div>
