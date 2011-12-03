@@ -34,11 +34,21 @@ def age(value):
 def auto_markdown(s):
     """Converts urls to markdown."""
     
-    url_pattern = re.compile(r'(http://[^\s]+)')
+    first_last_invalid = '[]()<>'
+    
+    first_char = '[\s\(\["]'
+    last_char = '[\s\)\]"]'
+    valid_url_char = '[^\s^\[^\)^\(^\]]'
+    url_pattern = re.compile(r'(%s?http://%s+%s?)' % (first_char, valid_url_char, last_char))
         
     def replace(s):
         res = s
         if re.match(url_pattern, s):
+            
+            # filter out url in html or in markdown tags, else strip whitespace/linefeed
+            if s[0] in first_last_invalid or s[-1] in first_last_invalid: return res
+            else: s = s.strip()
+            
             # images
             image_types = ('gif', 'jpg', 'jpeg', 'png')
             if any(map(lambda x: s.lower().endswith(x), image_types)):

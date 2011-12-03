@@ -105,6 +105,13 @@ body {
 	border: 0;
 }
 
+#message-list-help { 
+	font-size: 0.6em;
+	color: #383838;
+	margin: 11px 0 0 0.9px;
+	display: block;
+	float: left;
+}
 
 .message-list-new input {
 	display: block; 
