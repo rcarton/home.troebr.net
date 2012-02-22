@@ -17,13 +17,19 @@ IMGUR_IMAGE_LIST_TEMPLATE = 'modules/imgur_image_list/imgur_image_list.html'
 @register.inclusion_tag(IMGUR_IMAGE_LIST_TEMPLATE)
 def imgur_image_list(imgur_image_list):
     
+    all = []
     images = dict()
     for ident in imgur_image_list.lists.all():
         key = ident.user
         if not images.get(key, None): images[key] = []
-        images[key].extend(get_images_for_ident(ident))
+        l = get_images_for_ident(ident)
+        images[key].extend(l)
+        all.extend(l)
     
-    return {'images': images }
+    # Sort by date
+    all.sort(cmp=lambda x,y: cmp(x['image']['datetime'], y['image']['datetime']), reverse=True)
+    
+    return {'images': images, 'images_by_date': all }
 
 
 def get_images_for_ident(ident):

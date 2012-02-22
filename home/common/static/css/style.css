@@ -133,3 +133,18 @@ body {
 .message-content a:hover {
 	color: #84a4ba;	
 }
+
+#imgur-image-list {
+    background: url("../img/message_list/texture.png");
+    box-shadow: 1px 1px 2px #dedede, inset 0px 1px 0px #e6f5ff;
+    border: 1px solid #A4C9E3;
+    padding: 10px;
+    border-radius: 6px;	
+    float: left;
+    margin: 250px 0 0 1em;
+}
+.imgur-image-list-content {
+    max-height: 582px;
+    overflow: auto;
+    width: 114px;
+}

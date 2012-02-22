@@ -1,11 +1,20 @@
 
 
 <div id="imgur-image-list">
+    {% comment %}
 	{% for user, image_list in images.items %}
-	<div id="imgur-image-list-user">
+	<div class="imgur-image-list-user">
 		{% for im in image_list %}
 			<a href="{{ im.links.original }}"><img src="{{ im.links.small_square }}" /></a>
 		{% endfor %}
 	</div>
 	{% endfor %}
+    {% endcomment %}
+    
+    <div class="imgur-image-list-content">
+    {% for im in images_by_date %}
+        <a href="{{ im.links.original }}"><img src="{{ im.links.small_square }}" /></a>
+    {% endfor %}
+    </div>
+    
 </div>

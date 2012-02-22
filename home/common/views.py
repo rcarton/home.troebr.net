@@ -17,7 +17,7 @@ def home(request, place_name=None):
     
     #Only registered users
     if request.user not in place.users.all():
-        raise HttpResponseForbidden()
+        return HttpResponseForbidden()
     
     return render_to_response('home.html', RequestContext(request, { 'place': place,}))
 
