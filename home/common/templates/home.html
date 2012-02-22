@@ -9,14 +9,12 @@
 	
 {% block content %}
 
-<pre>
-
-	I miss you
+<div id="countdown">
 	{% if place.countdown %}
-		{{ place.countdown.get_delta }}
-	{% endif %}
-
-</pre>
+		{{ place.countdown.get_delta.days }} days
+	{% endif %}<br/>
+     TO GROW MY HAIR BACK.
+</div>
 
 <div id="module-wrapper">
 	{% if place.messagelist %}

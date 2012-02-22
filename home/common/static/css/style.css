@@ -1,4 +1,7 @@
 
+@import url(http://fonts.googleapis.com/css?family=Ropa+Sans);
+
+
 /* -- RESET ALL THE THINGS! -- */
 html, body { height: 100%; }
 * { margin: 0; padding: 0; }
@@ -20,6 +23,14 @@ body {
 	max-width: 840px;
 }
 
+#countdown {
+    width: 400px;
+    /*height: 240px;*/
+    float: right;	
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 4em;
+}
+
 
 /* -- Message list -- */
 .message-list {
@@ -28,7 +39,7 @@ body {
 	box-shadow: 1px 1px 2px #dedede, inset 0px 1px 0px #e6f5ff;
 	border: 1px solid #A4C9E3;
 	padding: 10px;
-	margin-top: 250px;
+	margin-top: 220px;
 	border-radius: 6px;
 	max-height: 800px;
 	/*position: absolute;
@@ -141,7 +152,7 @@ body {
     padding: 10px;
     border-radius: 6px;	
     float: left;
-    margin: 250px 0 0 1em;
+    margin: 220px 0 0 1em;
 }
 .imgur-image-list-content {
     max-height: 582px;
