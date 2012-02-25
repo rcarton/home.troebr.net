@@ -101,6 +101,13 @@ body {
 	max-width: 100%;	
 }
 
+.message blockquote {
+	border-left: 2px solid #8FACBF;
+	padding-left: 5px;
+	width: 100%;
+	font-style: italic;
+	margin-bottom: 0.8em;
+}
 
 .message-list-new {
 	padding-top: 10px;	
