@@ -2,9 +2,14 @@
 {% load message_list %}
 {% load imgur_image_list %}
 
+{% block custom-css-files %}
+
+{% endblock %}
+
 {% block custom-js-files %}
 	<script language="Javascript" type="text/javascript" src="{{STATIC_URL}}js/common.js"></script> 
-	<script language="Javascript" type="text/javascript" src="{{STATIC_URL}}js/slimScroll.js"></script> 
+	<script language="Javascript" type="text/javascript" src="{{STATIC_URL}}js/slimScroll.js"></script>
+    
 {% endblock %}
 	
 {% block content %}

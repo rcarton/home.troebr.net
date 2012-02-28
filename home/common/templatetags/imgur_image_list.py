@@ -34,13 +34,18 @@ def imgur_image_list(imgur_image_list):
 
 def get_images_for_ident(ident):
     
-    # Sign in with ident (mostly get the cookies)
-    # TODO? use OAuth instead of cookies
-    auth = dict(username=ident.username, password=ident.password, remember='remember', submit='')
-    r = requests.post(SIGNIN_URL, data=auth)
-    cookies = r.cookies
+    try:
+        # Sign in with ident (mostly get the cookies)
+        # TODO? use OAuth instead of cookies
+        auth = dict(username=ident.username, password=ident.password, remember='remember', submit='')
     
-    r = requests.get(get_url_for_action('images'), cookies=cookies) 
+        r = requests.post(SIGNIN_URL, data=auth, timeout=1)
+        cookies = r.cookies
+    
+        r = requests.get(get_url_for_action('images'), cookies=cookies, timeout=0.01) 
+    except requests.Timeout:
+        return []
+    
     if r.status_code != 200:
         return []
     else:

@@ -1,7 +1,7 @@
 bind = "0.0.0.0:8002"  # Or "unix:/tmp/gunicorn.sock"
 daemon = True            # Whether work in the background
 debug = False            # Some extra logging
-logfile = "/var/log/gunicorn/home.troebr.net/home.log" # Name of the log file
+errorlog = "/var/log/gunicorn/home.troebr.net/home.log" # Name of the log file
 loglevel = "info"        # The level at which to log
 pidfile = "gunicorn.pid" # Path to a PID file
 workers = 2              # Number of workers to initialize
