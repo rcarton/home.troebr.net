@@ -42,7 +42,7 @@ def get_images_for_ident(ident):
         r = requests.post(SIGNIN_URL, data=auth, timeout=1)
         cookies = r.cookies
     
-        r = requests.get(get_url_for_action('images'), cookies=cookies, timeout=0.01) 
+        r = requests.get(get_url_for_action('images'), cookies=cookies, timeout=1) 
     except requests.Timeout:
         return []
     
