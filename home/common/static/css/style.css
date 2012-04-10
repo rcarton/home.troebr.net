@@ -26,7 +26,8 @@ body {
 #countdown {
     width: 400px;
     /*height: 240px;*/
-    float: right;	
+    position: absolute;
+    right: 0;	
     font-family: 'Ropa Sans', sans-serif;
     font-size: 4em;
 }
