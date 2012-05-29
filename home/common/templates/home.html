@@ -16,9 +16,8 @@
 
 <div id="countdown">
 	{% if place.countdown %}
-		{{ place.countdown.get_delta.days }} days
-	{% endif %}<br/>
-     SINCE THE LAST TIME IT WAS 0.
+		{{ place.countdown }}
+	{% endif %}
 </div>
 
 <div id="module-wrapper">

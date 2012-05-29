@@ -56,9 +56,10 @@ class Countdown(Module):
     MODULE_NAME = 'countdown'
 
     end_date = models.DateTimeField()
-
-    def __unicode__(self):
-        return "%s - %s" % (self.name, self.end_date)
+    
+    # message = '[time] until next time'.
+    message = models.CharField(max_length=200, default='[days]', 
+                               help_text='Enter a string, [days] will be replaced by the number of days')
     
     def get_delta(self):
         return self.end_date - datetime.datetime.now()
@@ -68,7 +69,10 @@ class Countdown(Module):
                 'end_date': self.end_date,
                 'delta': self.get_delta()
                }  
-     
+    
+    def __unicode__(self):
+        return self.message.replace('[days]', str(self.get_delta().days))
+        
 class MessageList(Module):
     MODULE_NAME = 'messagelist'
     
