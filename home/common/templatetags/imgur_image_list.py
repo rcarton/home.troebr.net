@@ -14,8 +14,13 @@ API_FORMAT = "json"
 
 IMGUR_IMAGE_LIST_TEMPLATE = 'modules/imgur_image_list/imgur_image_list.html'
 
+
 @register.inclusion_tag(IMGUR_IMAGE_LIST_TEMPLATE)
-def imgur_image_list(imgur_image_list):
+def imgur_image_list(place):
+    return {'place': place}
+
+def imgur_image_list_ajax(imgur_image_list):
+    """Returns a dictionary with the images for all the imgur ident. """
     
     all = []
     images = dict()
@@ -39,11 +44,12 @@ def get_images_for_ident(ident):
         # TODO? use OAuth instead of cookies
         auth = dict(username=ident.username, password=ident.password, remember='remember', submit='')
     
-        r = requests.post(SIGNIN_URL, data=auth, timeout=1)
+        r = requests.post(SIGNIN_URL, data=auth, timeout=3)
         cookies = r.cookies
     
-        r = requests.get(get_url_for_action('images'), cookies=cookies, timeout=1) 
+        r = requests.get(get_url_for_action('images'), cookies=cookies, timeout=3) 
     except requests.Timeout:
+        print 'timeout when loading images from imgur'
         return []
     
     if r.status_code != 200:

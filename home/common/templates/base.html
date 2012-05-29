@@ -10,31 +10,35 @@
 	
 	<!--  Fonts -->
 	{% block custom-fonts %}{% endblock %}
-	
-	<!-- Javascript -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
-	<script language="Javascript" type="text/javascript">
-		var STATIC_URL = "{{STATIC_URL}}";
-		
-	{% block custom-js %}{% endblock %}
-	</script>
-	
-	{% block custom-js-files %}{% endblock %}
-	
+    
+    <!-- Custom css -->
+    <style type="text/css">{% block custom-css %}{% endblock %}</style>
+    
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{STATIC_URL}}img/moustache.png" />
 	
 	<!-- Title and meta -->
    	<title>{% block title %}HOME{% endblock %}</title>
    	{# <meta name="description" content="LET ME COME HOME, HOME IS WHEREVER I'M WITH YOU" /> #}
-   	{# <meta name="author" content="Rémi Carton" /> #}
+   	{# <meta name="author" content="RÃ©mi Carton" /> #}
    	{# <meta name="copyright" content="home.troebr.net" /> #}
-   	
-   	<!-- Custom css -->
-	<style type="text/css">{% block custom-css %}{% endblock %}</style>
-	
+
 	{% block custom-head %}{% endblock %}
+   	
+    <!-- Javascript -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <script language="Javascript" type="text/javascript">
+        var STATIC_URL = "{{STATIC_URL}}";
+        
+    {% block custom-js %}{% endblock %}
+    </script>
+    
+    {% block custom-js-files %}{% endblock %}
+    
+    
+    
+    
 	
 </head>
 {% endblock %}
@@ -57,6 +61,8 @@
 <div id="content"> 
 {% block content %} {% endblock %}
 </div>
+
+
 
 </body>
 {% endblock %}
