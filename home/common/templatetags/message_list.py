@@ -39,7 +39,7 @@ def auto_markdown(s):
     first_char = '[\s\(\["]'
     last_char = '[\s\)\]"]'
     valid_url_char = '[^\s^\[^\)^\(^\]]'
-    url_pattern = re.compile(r'(%s?http://%s+%s?)' % (first_char, valid_url_char, last_char))
+    url_pattern = re.compile(r'(%s?https?://%s+%s?)' % (first_char, valid_url_char, last_char))
         
     def replace(s):
         res = s
